@@ -135,3 +135,6 @@ quit
 (require 'bob-test)
  (clojure.test/run-tests 'bob-test )
 quit
+(require 'bob-test)
+ (clojure.test/run-tests 'bob-test )
+quit

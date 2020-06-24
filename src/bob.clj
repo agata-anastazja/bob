@@ -24,7 +24,7 @@
 
 (defn response-for [s] 
   (cond 
-    (= (str/trim s) "") "Fine. Be that way!" 
+    (str/blank? s) "Fine. Be that way!" 
     (and (yell? s ) (question? s) ) "Calm down, I know what I'm doing!"
     (yell? s ) "Whoa, chill out!"
     (question? s) "Sure."
