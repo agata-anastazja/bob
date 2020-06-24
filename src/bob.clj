@@ -1,12 +1,11 @@
 (ns bob
-(:import org.apache.commons.lang3.StringUtils)
-(:require [clojure.string :only [trim]])
+(:require [clojure.string :as str])
 )
 
 (defn last_character [s]
   (if (empty? s)
     ""
-    (nth s (dec (count s)))
+    (str (nth s (dec (count s))))
   ))
 
 (defn getAllAlphabeticChars [s]
@@ -20,7 +19,7 @@
 )
 
 (defn question? [s]
-  (let [last_char (last_character (trim s))]
+  (let [last_char (last_character (str/trim s))]
     (= last_char "?")))
 
 (defn response-for [s] 
@@ -28,7 +27,7 @@
     (and (yell? s ) (question? s) ) "Calm down, I know what I'm doing!"
     (and (yell? s ) ) "Whoa, chill out!"
     (question? s) "Sure."
-    (= (trim s) "") "Fine. Be that way!" 
+    (= (str/trim s) "") "Fine. Be that way!" 
     :else "Whatever."
   ))
 
