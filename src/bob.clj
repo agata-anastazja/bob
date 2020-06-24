@@ -1,22 +1,22 @@
 (ns bob
-(:require [clojure.string :as str])
-)
+  (:require [clojure.string :as str]))
 
 (defn last_character [s]
   (if (empty? s)
     ""
-    (str (nth s (dec (count s))))
-  ))
+    (str (nth s (dec (count s))))))
 
-(defn getAllAlphabeticChars [s]
-  (filter (fn [x] (Character/isLetter x)) s))
+(defn getAllAlphabeticCharsAsString [s]
+  (clojure.string/join
+    ""
+    (filter (fn [x] (Character/isLetter x)) s)))
 
 (defn yell? [s]
-  (StringUtils/isAllUpperCase 
-    (clojure.string/join 
-      "" 
-      (getAllAlphabeticChars s)))
-)
+  (let [alphabeticCharsString (getAllAlphabeticCharsAsString s)]
+    (if (= alphabeticCharsString "") 
+      false
+      (= (str/upper-case alphabeticCharsString)
+      alphabeticCharsString))))
 
 (defn question? [s]
   (let [last_char (last_character (str/trim s))]
@@ -24,10 +24,10 @@
 
 (defn response-for [s] 
   (cond 
-    (and (yell? s ) (question? s) ) "Calm down, I know what I'm doing!"
-    (and (yell? s ) ) "Whoa, chill out!"
-    (question? s) "Sure."
     (= (str/trim s) "") "Fine. Be that way!" 
+    (and (yell? s ) (question? s) ) "Calm down, I know what I'm doing!"
+    (yell? s ) "Whoa, chill out!"
+    (question? s) "Sure."
     :else "Whatever."
   ))
 

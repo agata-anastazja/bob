@@ -1,5 +1,5 @@
 fileignoreconfig:
-- filename: .exercism/metadata.json
-  checksum: 6ff01f5fa9774edf748deece5d63cb39e35d6c50434ec902e3f069144d0ee2aa
+- filename: target/classes/META-INF/maven/bob/bob/pom.properties
+  checksum: b9671d1e95a1c626fe90f4935afd9b0dae3ed0000a4a4095ea3e6b24e1ab2aae
   ignore_detectors: []
 scopeconfig: []
